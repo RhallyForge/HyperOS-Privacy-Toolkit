@@ -1,3 +1,17 @@
+![Banner HyperOS Privacy Toolkit](assets/banner.svg)
+
+<div align="center">
+
+![Windows](https://img.shields.io/badge/Windows-10%20%2F%2011-1f6feb?style=for-the-badge&logo=windows11&logoColor=white) ![HyperOS](https://img.shields.io/badge/HyperOS-Experimental-147cc5?style=for-the-badge) ![No root](https://img.shields.io/badge/No%20Root-Required-218b78?style=for-the-badge) ![License](https://img.shields.io/badge/License-MIT-5e6d88?style=for-the-badge)
+
+**🛡️ Meno pubblicità · 🔐 Più controllo · 📱 Per Xiaomi / Redmi / POCO supportati**
+
+[🇬🇧 English](README.md) · [🚀 Come si usa](#come-si-usa) · [📱 Compatibilità](#il-mio-telefono-è-compatibile) · [🛠️ Contribuisci](CONTRIBUTING.md)
+
+</div>
+
+---
+
 # HyperOS Privacy Toolkit
 
 **Meno pubblicità. Più controllo sul tuo Xiaomi, Redmi o POCO.**
@@ -6,7 +20,7 @@ Un progetto gratuito e open source per individuare e disattivare alcune raccoman
 
 > **Versione sperimentale.** Oggi è uno strumento per Windows a riga di comando, non ancora un'app con pulsanti. Un'interfaccia grafica semplice è il prossimo obiettivo.
 
-## Cosa può fare davvero?
+## ✨ Cosa può fare davvero?
 
 | Funzione | Stato |
 |---|---|
@@ -19,13 +33,13 @@ Un progetto gratuito e open source per individuare e disattivare alcune raccoman
 
 Prima legge lo stato di un'impostazione, poi richiede il permesso per cambiarla e infine verifica il risultato. Alcune modifiche sono ripristinabili automaticamente; la riattivazione di MSA per ora è solo manuale.
 
-## Il mio telefono è compatibile?
+## 📱 Il mio telefono è compatibile?
 
 **Testato realmente:** POCO F5 (23049PCD8G, marble), Android 15, HyperOS OS3.0.4.0 globale, interfaccia italiana.
 
 **Altri Xiaomi, Redmi e POCO:** per ora solo rilevamento. Il programma non tenta modifiche su modelli o versioni non verificati.
 
-## Come si usa?
+## 🚀 Come si usa?
 
 Al momento servono un PC Windows e qualche passaggio tecnico. Se non hai dimestichezza con il terminale, **conviene aspettare la futura versione con interfaccia guidata**.
 
@@ -54,11 +68,11 @@ Per MSA è prevista un'ulteriore conferma perché Xiaomi avverte che la revoca p
 
 Il ripristino automatico è disponibile solo per determinate modifiche documentate nei log. Per MSA, usa **Impostazioni → Autorizzazioni e revoche → msa** per concedere nuovamente l'autorizzazione.
 
-## Cosa non fa
+## ⚠️ Cosa non fa
 
 Non cambia il sistema operativo, non disinstalla app, non promette prestazioni migliori e non garantisce l'eliminazione di tutti gli annunci o delle comunicazioni con Xiaomi. Gli annunci di Gestione File sono intermittenti: alcuni test senza annunci non equivalgono a una soluzione definitiva.
 
-## Sicurezza e privacy
+## 🛡️ Sicurezza e privacy
 
 - Nessun root, reset, flash o rimozione di package.
 - Nessuna modifica automatica su telefoni non supportati.
@@ -66,7 +80,7 @@ Non cambia il sistema operativo, non disinstalla app, non promette prestazioni m
 - Screenshot e log locali non vengono pubblicati su GitHub.
 - HyperOS può richiedere **Debug USB (impostazioni di sicurezza)** per consentire i tocchi automatici.
 
-## Prossimo obiettivo
+## 🧭 Prossimo obiettivo
 
 Realizzare un **programma Windows con interfaccia semplice**: colleghi il telefono, vedi quali modifiche sono disponibili e decidi quali autorizzare, senza ricordare comandi.
 
