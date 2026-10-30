@@ -1,0 +1,15 @@
+{
+  "id": "generic-xiaomi-read-only",
+  "name": "Generic Xiaomi / Redmi / POCO (read-only)",
+  "status": "generic-read-only",
+  "priority": 0,
+  "match": {
+    "generic": true
+  },
+  "tested": [],
+  "actions": [],
+  "notes": [
+    "Device detection and package inventory are available.",
+    "No UI mutation is offered without a verified device/build/locale profile."
+  ]
+}

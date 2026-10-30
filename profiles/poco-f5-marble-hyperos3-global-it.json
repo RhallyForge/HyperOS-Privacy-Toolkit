@@ -1,0 +1,144 @@
+{
+  "id": "poco-f5-marble-hyperos3-global-it",
+  "name": "POCO F5 marble — HyperOS 3 Global — Italian UI",
+  "status": "verified-on-one-device",
+  "priority": 100,
+  "match": {
+    "devices": ["marble"],
+    "models": ["23049PCD8G"],
+    "hyperos_prefixes": ["OS3.0"],
+    "locales": ["it-IT"],
+    "regions": ["IT"]
+  },
+  "tested": [
+    {
+      "device": "POCO F5",
+      "codename": "marble",
+      "android": "15",
+      "hyperos": "OS3.0.4.0 global",
+      "locale": "it-IT"
+    }
+  ],
+  "packages": {
+    "file_manager": "com.mi.android.globalFileexplorer",
+    "security": "com.miui.securitycenter",
+    "downloads_ui": "com.android.providers.downloads.ui",
+    "music": "com.miui.player",
+    "themes": "com.android.thememanager",
+    "getapps": "com.xiaomi.mipicks",
+    "msa": "com.miui.msa.global",
+    "analytics": "com.miui.analytics"
+  },
+  "actions": [
+    {
+      "id": "security-recommendations",
+      "title": "Security: Receive suggestions",
+      "kind": "toggle",
+      "maturity": "verified",
+      "analyzable": true,
+      "writable": true,
+      "labels": ["Ricevi suggerimenti"],
+      "route": [
+        {"op": "launch", "package": "com.miui.securitycenter", "after": 1.2},
+        {"op": "click_id", "id": "com.miui.securitycenter:id/settings"},
+        {"op": "scroll_to_text", "labels": ["Ricevi suggerimenti"]}
+      ],
+      "restore_mode": "automatic"
+    },
+    {
+      "id": "cleaner-recommendations",
+      "title": "Cleaner: Receive suggestions",
+      "kind": "toggle",
+      "maturity": "verified",
+      "analyzable": true,
+      "writable": true,
+      "labels": ["Ricevi suggerimenti"],
+      "route": [
+        {"op": "launch", "package": "com.miui.securitycenter", "after": 1.2},
+        {"op": "click_id", "id": "com.miui.securitycenter:id/settings"},
+        {"op": "scroll_to_text", "labels": ["Pulizia"]},
+        {"op": "click_text", "labels": ["Pulizia"]},
+        {"op": "scroll_to_text", "labels": ["Ricevi suggerimenti"]}
+      ],
+      "restore_mode": "automatic"
+    },
+    {
+      "id": "downloads-recommended-content",
+      "title": "Downloads: Show recommended content",
+      "kind": "toggle",
+      "maturity": "verified",
+      "analyzable": true,
+      "writable": true,
+      "labels": ["Mostra i contenuti consigliati"],
+      "route": [
+        {"op": "launch", "package": "com.android.providers.downloads.ui", "after": 1.2},
+        {"op": "click_id", "id": "com.android.providers.downloads.ui:id/more"},
+        {"op": "click_text", "labels": ["Impostazioni"]},
+        {"op": "wait", "seconds": 1.0}
+      ],
+      "confirmation": {
+        "type": "conditional-text",
+        "titles": ["Disattiva le fonti consigliate"],
+        "accept_labels": ["OK"],
+        "after": 1.0
+      },
+      "restore_mode": "automatic"
+    },
+    {
+      "id": "msa-authorization-revocation",
+      "title": "MSA: revoke Xiaomi authorization",
+      "kind": "toggle",
+      "maturity": "verified",
+      "analyzable": true,
+      "writable": true,
+      "risk": "server-data-deletion",
+      "labels": ["msa"],
+      "route": [
+        {"op": "launch", "package": "com.android.settings", "after": 2.0},
+        {"op": "click_text", "labels": ["Cerca in Impostazioni"]},
+        {"op": "set_text", "class": "android.widget.EditText", "value": "Autorizzazioni e revoche"},
+        {"op": "wait", "seconds": 4.0},
+        {"op": "click_text", "labels": ["Autorizzazioni e revoche"], "class": "android.widget.TextView"},
+        {"op": "wait", "seconds": 4.0},
+        {"op": "scroll_to_text", "labels": ["msa"]}
+      ],
+      "confirmation": {
+        "type": "countdown-button",
+        "resource_id": "android:id/button1",
+        "timeout": 15,
+        "after": 4.0
+      },
+      "verify_reopen": "com.android.settings",
+      "restore_mode": "manual",
+      "manual_restore": "Open Autorizzazioni e revoche, turn on only msa, then reopen the screen and verify it is checked. Automatic reactivation has not been tested."
+    },
+    {
+      "id": "filemanager-network-audit",
+      "title": "File Manager: selective network controls audit",
+      "kind": "network-audit",
+      "maturity": "experimental",
+      "analyzable": true,
+      "writable": false,
+      "route": [
+        {"op": "app_details", "package": "com.mi.android.globalFileexplorer", "after": 2.0},
+        {"op": "click_text", "labels": ["Accesso alla rete"]},
+        {"op": "wait", "seconds": 2.0}
+      ],
+      "controls": {
+        "mobile": "com.miui.securitycenter:id/layout_mobile_setting1",
+        "wifi": "com.miui.securitycenter:id/layout_wifi_setting",
+        "background": "com.miui.securitycenter:id/layout_network_setting"
+      }
+    }
+  ],
+  "file_manager_ad_sampling": {
+    "package": "com.mi.android.globalFileexplorer",
+    "ad_activity": "com.zeus.gmc.sdk.mobileads.columbus.ad.videoads.player.GMCAdActivity",
+    "wait_seconds": 5
+  },
+  "unsupported": [
+    "PackageManager disable-user for com.miui.msa.global and com.miui.analytics is rejected by this HyperOS build.",
+    "Google Usage and diagnostics exposes an asynchronous state that did not remain stable after reopening.",
+    "File Manager Wi-Fi access control is visible but disabled by HyperOS on the tested build."
+  ]
+}
