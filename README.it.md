@@ -1,127 +1,75 @@
-# HyperOS Privacy Toolkit — guida italiana
+# HyperOS Privacy Toolkit
 
-HyperOS Privacy Toolkit analizza e, solo dopo autorizzazione esplicita, modifica impostazioni pubblicitarie e di raccolta dati facoltativa verificate su dispositivi Xiaomi, Redmi e POCO.
+**Meno pubblicità. Più controllo sul tuo Xiaomi, Redmi o POCO.**
 
-Usa gli Android SDK Platform-Tools ufficiali e UI Automator. La modalità predefinita è `analyze` e non modifica il telefono. Non richiede root, bootloader sbloccato, flash, disinstallazioni o cancellazione dati.
+Un progetto gratuito e open source per individuare e disattivare alcune raccomandazioni pubblicitarie e impostazioni facoltative di raccolta dati su HyperOS. Non richiede root né lo sblocco del bootloader.
 
-## Compatibilità realmente verificata
+> **Versione sperimentale.** Oggi è uno strumento per Windows a riga di comando, non ancora un'app con pulsanti. Un'interfaccia grafica semplice è il prossimo obiettivo.
 
-L'unico profilo scrivibile attuale è:
+## Cosa può fare davvero?
 
-- POCO F5 `23049PCD8G` (`marble`)
-- Android 15
-- HyperOS `OS3.0.4.0` globale
-- interfaccia italiana, regione Italia
+| Funzione | Stato |
+|---|---|
+| Disattivare i suggerimenti in Sicurezza | Testato |
+| Disattivare i suggerimenti in Pulizia | Testato |
+| Disattivare i contenuti consigliati in Download | Testato |
+| Revocare l'autorizzazione pubblicitaria MSA | Testato; richiede una conferma aggiuntiva |
+| Eliminare tutte le pubblicità in Gestione File | **Non dimostrato** |
+| Bloccare tutta la telemetria Xiaomi | **Non dimostrato** |
 
-Su altri dispositivi il programma effettua il rilevamento e seleziona il profilo generico in sola lettura. Non tenta tocchi basati su nomi o percorsi non verificati.
+Prima legge lo stato di un'impostazione, poi richiede il permesso per cambiarla e infine verifica il risultato. Alcune modifiche sono ripristinabili automaticamente; la riattivazione di MSA per ora è solo manuale.
 
-### Funzioni verificate
+## Il mio telefono è compatibile?
 
-- Disattivazione “Ricevi suggerimenti” in Sicurezza.
-- Disattivazione “Ricevi suggerimenti” in Pulizia.
-- Disattivazione “Mostra i contenuti consigliati” in Download, inclusa la conferma.
-- Revoca ufficiale dell'autorizzazione MSA, con conto alla rovescia e verifica dopo la riapertura delle Impostazioni.
-- Log prima/dopo e ripristino automatico per i tre interruttori pubblicitari.
+**Testato realmente:** POCO F5 (23049PCD8G, marble), Android 15, HyperOS OS3.0.4.0 globale, interfaccia italiana.
 
-### Funzioni sperimentali o incomplete
+**Altri Xiaomi, Redmi e POCO:** per ora solo rilevamento. Il programma non tenta modifiche su modelli o versioni non verificati.
 
-- Controllo rete di Gestione File: il Wi-Fi era visibile ma non modificabile.
-- Campionamento degli annunci GMC di Gestione File: gli annunci sono intermittenti; l'assenza in alcune aperture non prova la risoluzione.
-- Riattivazione MSA: percorso manuale documentato, automazione inversa non ancora verificata.
-- Telemetria residua: non misurata in modo sufficiente per dichiararla disattivata.
+## Come si usa?
 
-La disabilitazione PackageManager di MSA e Analytics non è offerta: HyperOS ha rifiutato entrambi i comandi con `Cannot disable system packages`.
+Al momento servono un PC Windows e qualche passaggio tecnico. Se non hai dimestichezza con il terminale, **conviene aspettare la futura versione con interfaccia guidata**.
 
-## Installazione
-
-1. Installa Python 3.11 o successivo.
-2. Installa gli [SDK Platform-Tools ufficiali](https://developer.android.com/tools/releases/platform-tools).
-3. Clona il repository e prepara l'ambiente:
+1. Installa [Python 3.11 o successivo](https://www.python.org/downloads/) e gli [Android Platform-Tools ufficiali](https://developer.android.com/tools/releases/platform-tools).
+2. Abilita il debug USB o wireless autorizzato sul telefono e collegalo al PC.
+3. Apri PowerShell nella cartella del progetto ed esegui:
 
 ```powershell
-cd HyperOS-Privacy-Toolkit
 py -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -e .
-```
-
-## Primo controllo sicuro
-
-```powershell
 hyperos-privacy doctor
-hyperos-privacy list-actions
 hyperos-privacy analyze
 ```
 
-Se ADB non è nel `PATH`:
+Questi comandi verificano il collegamento e analizzano il telefono: **non modificano le impostazioni**.
+
+Per applicare una modifica testata, il comando richiede una conferma esplicita:
 
 ```powershell
-hyperos-privacy --adb 'C:\percorso\platform-tools\adb.exe' doctor
+hyperos-privacy analyze --action security-recommendations
+hyperos-privacy apply security-recommendations --confirm security-recommendations
 ```
 
-Il programma rileva automaticamente USB o ADB wireless. Se lo stesso telefono compare sia come IP sia tramite mDNS, lo deduplica. Con più telefoni distinti richiede `--serial`.
+Per MSA è prevista un'ulteriore conferma perché Xiaomi avverte che la revoca può comportare l'eliminazione dei dati associati sui suoi server. Non procedere se non hai letto l'avviso.
 
-## Applicare una singola modifica
+Il ripristino automatico è disponibile solo per determinate modifiche documentate nei log. Per MSA, usa **Impostazioni → Autorizzazioni e revoche → msa** per concedere nuovamente l'autorizzazione.
 
-Analizza prima l'azione:
+## Cosa non fa
 
-```powershell
-hyperos-privacy analyze --action downloads-recommended-content
-```
+Non cambia il sistema operativo, non disinstalla app, non promette prestazioni migliori e non garantisce l'eliminazione di tutti gli annunci o delle comunicazioni con Xiaomi. Gli annunci di Gestione File sono intermittenti: alcuni test senza annunci non equivalgono a una soluzione definitiva.
 
-Poi ripeti esattamente il suo ID nella conferma:
+## Sicurezza e privacy
 
-```powershell
-hyperos-privacy apply downloads-recommended-content `
-  --confirm downloads-recommended-content
-```
+- Nessun root, reset, flash o rimozione di package.
+- Nessuna modifica automatica su telefoni non supportati.
+- Conferma esplicita prima di cambiare impostazioni.
+- Screenshot e log locali non vengono pubblicati su GitHub.
+- HyperOS può richiedere **Debug USB (impostazioni di sicurezza)** per consentire i tocchi automatici.
 
-Per la revoca MSA serve anche confermare di aver letto l'avviso Xiaomi sulla possibile eliminazione dei dati server:
+## Prossimo obiettivo
 
-```powershell
-hyperos-privacy apply msa-authorization-revocation `
-  --confirm msa-authorization-revocation `
-  --acknowledge-data-deletion
-```
+Realizzare un **programma Windows con interfaccia semplice**: colleghi il telefono, vedi quali modifiche sono disponibili e decidi quali autorizzare, senza ricordare comandi.
 
-La revoca MSA non disabilita il package: `com.miui.msa.global` resta installato e può rimanere nello stato PackageManager DEFAULT.
+Per approfondire: [configurazione ADB](docs/adb-setup.md), [compatibilità](docs/compatibility.md), [risultati tecnici](docs/technical-findings.md), [sicurezza](docs/safety-and-data-handling.md).
 
-## Ripristino
-
-Le modifiche a Sicurezza, Pulizia e Download possono essere ripristinate usando il log creato dal tool:
-
-```powershell
-hyperos-privacy restore runtime\logs\run-YYYYMMDD-HHMMSS-apply.json `
-  --action security-recommendations `
-  --confirm security-recommendations
-```
-
-Per riattivare manualmente MSA:
-
-1. Apri Impostazioni e cerca “Autorizzazioni e revoche”.
-2. Apri il risultato sotto “Impronte digitali, dati del viso e blocco schermo”.
-3. Attiva esclusivamente `msa`.
-4. Riapri la schermata e verifica che l'interruttore sia attivo.
-
-## Debug USB e INJECT_EVENTS
-
-Il debug wireless, il Debug USB normale e “Debug USB (impostazioni di sicurezza)” sono controlli distinti. ADB può collegarsi correttamente ma HyperOS può rifiutare i tocchi con un errore `INJECT_EVENTS`. In quel caso è necessario abilitare “Debug USB (impostazioni di sicurezza)” nelle Opzioni sviluppatore e riconnettere o riavviare ADB; il toolkit non tenta bypass.
-
-Consulta [la procedura ADB completa](docs/adb-setup.md).
-
-## Protezione dei dati
-
-- Nessun file personale viene letto o trasferito.
-- Log, screenshot e dump runtime sono esclusi da Git.
-- Seriali ADB e IP locali non vengono scritti nei log.
-- Gli screenshot sperimentali di Gestione File sono completi solo quando un overlay pubblicitario copre l'interfaccia; altrimenti viene conservata soltanto la barra superiore.
-- Se una schermata non corrisponde al profilo, il programma si ferma senza indovinare.
-
-## Test offline
-
-```powershell
-$env:PYTHONPATH = 'src'
-python -m unittest discover -s tests -v
-```
-
-Per dettagli e limiti consulta [compatibilità](docs/compatibility.md), [scoperte tecniche](docs/technical-findings.md) e [sicurezza](docs/safety-and-data-handling.md).
+[English version](README.md) · [Licenza MIT](LICENSE)
