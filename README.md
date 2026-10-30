@@ -1,3 +1,17 @@
+![HyperOS Privacy Toolkit banner](assets/banner.svg)
+
+<div align="center">
+
+![Windows](https://img.shields.io/badge/Windows-10%20%2F%2011-1f6feb?style=for-the-badge&logo=windows11&logoColor=white) ![HyperOS](https://img.shields.io/badge/HyperOS-Experimental-147cc5?style=for-the-badge) ![No root](https://img.shields.io/badge/No%20Root-Required-218b78?style=for-the-badge) ![License](https://img.shields.io/badge/License-MIT-5e6d88?style=for-the-badge)
+
+**🛡️ Less advertising · 🔐 More control · 📱 For supported Xiaomi / Redmi / POCO**
+
+[🇮🇹 Italiano](README.it.md) · [🚀 Getting started](#how-do-i-use-it) · [📱 Compatibility](#does-my-phone-work) · [🛠️ Contribute](CONTRIBUTING.md)
+
+</div>
+
+---
+
 # HyperOS Privacy Toolkit
 
 **Less advertising. More control over your Xiaomi, Redmi or POCO phone.**
@@ -6,7 +20,7 @@ A free, open-source project that helps identify and turn off selected advertisin
 
 > **Early version — not a one-click cleaner yet.** Today this project is a command-line tool for Windows. A beginner-friendly graphical application is a goal, not an existing feature.
 
-## What does it actually do?
+## ✨ What can it do?
 
 | Feature | Status |
 |---|---|
@@ -19,13 +33,13 @@ A free, open-source project that helps identify and turn off selected advertisin
 
 The tool checks the current setting, asks before changing it, and checks the result. Some actions can be restored automatically. MSA reauthorization is documented but not yet automated.
 
-## Does my phone work?
+## 📱 Does my phone work?
 
 **Tested:** POCO F5 (23049PCD8G / marble), Android 15, HyperOS OS3.0.4.0 Global, Italian interface.
 
 **Other Xiaomi, Redmi and POCO devices:** detection only for now. The tool will **not** guess where to tap or apply untested changes.
 
-## How do I use it?
+## 🚀 How do I use it?
 
 The current version requires a Windows computer and some setup. If you're not comfortable with terminals, **we recommend waiting for a guided desktop version**.
 
@@ -45,7 +59,7 @@ These commands only check the connection and analyze the device; they do **not**
 
 For individual changes, confirmation, restoration and troubleshooting, see the [Italian guide](README.it.md) or the [technical instructions](docs/adb-setup.md).
 
-## Safety first
+## 🛡️ Safety first
 
 - No root, factory reset, package removal or firmware changes.
 - No automatic changes on unsupported phone profiles.
@@ -54,7 +68,7 @@ For individual changes, confirmation, restoration and troubleshooting, see the [
 - Local logs and screenshots are excluded from the repository.
 - Xiaomi may require **USB debugging (Security settings)** to allow automation.
 
-## Project status and what's next
+## 🧭 Project status and what's next
 
 This is an experimental project, built and tested initially on one POCO F5. The next major improvement is a **simple Windows interface**: connect the device, review available changes and approve them with clear explanations.
 
