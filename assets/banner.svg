@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" role="img" aria-label="HyperOS Privacy Toolkit: less advertising, more control, no root required">
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#061321"/><stop offset=".52" stop-color="#0c2445"/><stop offset="1" stop-color="#103d79"/></linearGradient>
+ <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b4e5ff"/><stop offset=".45" stop-color="#54b5ff"/><stop offset="1" stop-color="#2973ee"/></linearGradient>
+ <linearGradient id="phone" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#143b6c"/><stop offset=".6" stop-color="#081a31"/><stop offset="1" stop-color="#0a2447"/></linearGradient>
+ <linearGradient id="shield" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#8cdeff"/><stop offset="1" stop-color="#2876f5"/></linearGradient>
+ <radialGradient id="glow"><stop stop-color="#237bea" stop-opacity=".5"/><stop offset="1" stop-color="#237bea" stop-opacity="0"/></radialGradient>
+ <filter id="soft"><feGaussianBlur stdDeviation="12"/></filter>
+</defs>
+<rect width="1200" height="400" fill="url(#bg)"/>
+<circle cx="984" cy="183" r="290" fill="url(#glow)"/>
+<g fill="none" stroke="#48a5ff" opacity=".15" stroke-width="1.4"><circle cx="957" cy="190" r="180"/><circle cx="957" cy="190" r="240"/><path d="M0 325C220 255 360 368 570 310S930 230 1200 330"/><path d="M0 347C250 288 420 391 660 321S980 275 1200 359"/></g>
+<path d="M0 375C175 326 312 407 515 369S940 347 1200 383V400H0Z" fill="#031024" opacity=".55"/>
+<g font-family="Segoe UI, Arial, sans-serif">
+ <text x="62" y="112" fill="#fff" font-weight="800" font-size="64" letter-spacing="-2.4">HyperOS</text>
+ <text x="62" y="184" fill="url(#blue)" font-weight="800" font-size="66" letter-spacing="-2.7">Privacy Toolkit</text>
+ <text x="64" y="232" fill="#d6e6fb" font-size="21">Less advertising. More control.</text>
+ <text x="64" y="262" fill="#80c7ff" font-size="21" font-weight="600">No root required.</text>
+ <g font-size="13" font-weight="700" letter-spacing="1.1">
+  <rect x="62" y="302" width="118" height="31" rx="15.5" fill="#16355b" stroke="#316ba4"/><text x="84" y="323" fill="#b8e0ff">OPEN SOURCE</text>
+  <rect x="191" y="302" width="84" height="31" rx="15.5" fill="#16355b" stroke="#316ba4"/><text x="211" y="323" fill="#b8e0ff">WINDOWS</text>
+  <rect x="286" y="302" width="96" height="31" rx="15.5" fill="#16355b" stroke="#316ba4"/><text x="303" y="323" fill="#b8e0ff">HYPEROS</text>
+  <rect x="393" y="302" width="86" height="31" rx="15.5" fill="#16355b" stroke="#316ba4"/><text x="413" y="323" fill="#b8e0ff">ALPHA</text>
+ </g>
+ <text x="63" y="367" fill="#89aaca" font-size="13" letter-spacing="2">XIAOMI  &#8226;  REDMI  &#8226;  POCO</text>
+</g>
+<g transform="translate(748,17) rotate(7 156 190)">
+ <rect x="45" y="9" width="281" height="381" rx="36" fill="#0b1c35" stroke="#8dc6ff" stroke-width="5"/>
+ <rect x="56" y="19" width="259" height="361" rx="29" fill="url(#phone)" stroke="#336ca9"/>
+ <circle cx="186" cy="37" r="5" fill="#040c19"/>
+ <circle cx="186" cy="194" r="105" fill="#2580e6" opacity=".16"/>
+ <circle cx="186" cy="194" r="90" fill="none" stroke="#3996f7" opacity=".34"/>
+ <path d="M186 115L257 143V187C257 240 226 269 186 290C145 269 115 240 115 187V143Z" fill="#0b396d" stroke="url(#shield)" stroke-width="6"/>
+ <path d="M186 137L238 157V188C238 225 218 248 186 268C154 248 134 225 134 188V157Z" fill="#153e6c" opacity=".7"/>
+ <rect x="165" y="186" width="42" height="45" rx="8" fill="#abdeff"/>
+ <path d="M174 188V177C174 159 198 159 198 177V188" fill="none" stroke="#abdeff" stroke-width="8" stroke-linecap="round"/>
+ <circle cx="186" cy="208" r="4" fill="#1a538f"/>
+</g>
+<g font-family="Segoe UI, Arial, sans-serif" transform="translate(1023,90)">
+ <rect width="149" height="49" rx="14" fill="#0d2b50" stroke="#407ebc"/>
+ <circle cx="25" cy="24" r="11" fill="none" stroke="#a7d9ff" stroke-width="2"/><path d="M17 32L33 16" stroke="#a7d9ff" stroke-width="2"/>
+ <text x="44" y="28" font-size="14" fill="#d8ecff">Less ads</text><rect x="112" y="17" width="25" height="14" rx="7" fill="#2da5ff"/><circle cx="130" cy="24" r="6" fill="#fff"/>
+ <rect y="62" width="149" height="49" rx="14" fill="#0d2b50" stroke="#407ebc"/>
+ <path d="M16 87Q25 75 34 87Q25 98 16 87Z" fill="none" stroke="#a7d9ff" stroke-width="2"/><path d="M15 97L35 76" stroke="#a7d9ff" stroke-width="2"/>
+ <text x="44" y="90" font-size="14" fill="#d8ecff">Privacy</text><rect x="112" y="79" width="25" height="14" rx="7" fill="#2da5ff"/><circle cx="130" cy="86" r="6" fill="#fff"/>
+ <rect y="124" width="149" height="49" rx="14" fill="#0d2b50" stroke="#407ebc"/>
+ <path d="M22 139L32 143V150C32 159 26 162 22 164C18 162 12 159 12 150V143Z" stroke="#a7d9ff" stroke-width="2" fill="none"/>
+ <text x="44" y="153" font-size="14" fill="#d8ecff">Control</text><rect x="112" y="141" width="25" height="14" rx="7" fill="#2da5ff"/><circle cx="130" cy="148" r="6" fill="#fff"/>
+</g>
+</svg>
