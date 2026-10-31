@@ -37,7 +37,7 @@ jobs:
       - name: Build portable executable
         shell: pwsh
         run: |
-          python -m PyInstaller --noconfirm --clean --onedir --windowed --name HyperOS-Privacy-Toolkit --paths src --add-data "profiles;profiles" --collect-all uiautomator2 --collect-all adbutils --collect-all PIL src/hyperos_privacy_toolkit/gui.py
+          python -m PyInstaller --noconfirm --clean --onedir --windowed --name HyperOS-Privacy-Toolkit --paths src --add-data "profiles;profiles" --collect-all uiautomator2 --collect-all adbutils --collect-all PIL tools/launch_gui.py
       - name: Verify packaged dependencies and profiles
         shell: pwsh
         run: |
