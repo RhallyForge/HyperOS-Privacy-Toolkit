@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -12,7 +13,11 @@ class ProfileError(RuntimeError):
 
 
 def default_profiles_dir() -> Path:
-    return Path(__file__).resolve().parents[2] / "profiles"
+    # PyInstaller extracts bundled data to _MEIPASS. Local editable installs
+    # continue to resolve profiles from the repository root.
+    if getattr(sys, "frozen", False):
+        return Path(sys._MEIPASS) / "profiles"
+    return Path(__file__).resolve().parents[2] / "profiles
 
 
 def load_profiles(directory: Path) -> list[dict[str, Any]]:
