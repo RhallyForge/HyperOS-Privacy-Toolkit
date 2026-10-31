@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+import os
+import sys
 import queue
 import re
 import subprocess
@@ -27,6 +29,13 @@ BLUE = "#348ef5"
 GREEN = "#4adeac"
 YELLOW = "#f7ca76"
 RED = "#fa7c89"
+
+def user_log_directory() -> Path:
+    """Persistent and writable per-user logs, including for packaged EXEs."""
+    local = os.environ.get("LOCALAPPDATA")
+    base = Path(local) if local else Path.home() / ".local" / "share"
+    return base / "HyperOSPrivacyToolkit" / "logs"
+
 
 LABELS = {
     "security-recommendations": (
@@ -355,7 +364,7 @@ class PrivacyApp(tk.Tk):
         if self.connection is None:
             raise RuntimeError("Collega un telefono prima di continuare.")
         _adb, connected, info, profile = self.connection
-        log = RunLog(Path("runtime/logs").resolve(), operation, connected.serial, info, profile["id"])
+        log = RunLog(user_log_directory(), operation, connected.serial, info, profile["id"])
         return ActionExecutor(connected.serial, profile, log), log
 
     def _job(self, mode: str, action_id: str | None = None, log_path: Path | None = None,
@@ -480,6 +489,13 @@ class PrivacyApp(tk.Tk):
 
 
 def main() -> None:
+    if "--smoke-test" in sys.argv:
+        # Used by the Windows build workflow; no phone or GUI needed.
+        from .profiles import load_profiles, default_profiles_dir
+        import uiautomator2
+        profiles = load_profiles(default_profiles_dir())
+        assert any(p.get("status") == "verified-on-one-device" for p in profiles)
+        return
     app = PrivacyApp()
     app.mainloop()
 
