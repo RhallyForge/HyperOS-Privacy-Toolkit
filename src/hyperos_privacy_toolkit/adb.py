@@ -37,6 +37,7 @@ def find_adb(explicit: str | None = None) -> Path:
     if program_files_x86:
         candidates.append(Path(program_files_x86) / "Android/android-sdk/platform-tools/adb.exe")
     candidates.append(Path("C:/Android/platform-tools/adb.exe"))
+    candidates.append(Path("C:/ADB/platform-tools/adb.exe"))
 
     for candidate in candidates:
         if candidate.is_file():
