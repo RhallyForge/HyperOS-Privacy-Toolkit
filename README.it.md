@@ -39,6 +39,12 @@ Prima legge lo stato di un'impostazione, poi richiede il permesso per cambiarla 
 
 **Altri Xiaomi, Redmi e POCO:** per ora solo rilevamento. Il programma non tenta modifiche su modelli o versioni non verificati.
 
+## 🖥️ Interfaccia grafica Windows (anteprima)
+
+È disponibile un'interfaccia grafica sperimentale nel ramo di sviluppo `feature/windows-gui`: rileva il telefono, mostra le impostazioni compatibili, analizza e chiede conferma prima di ogni modifica. Non è ancora una versione `.exe` pronta da scaricare né è stata collaudata su un PC Windows reale.
+
+Dopo l'installazione delle dipendenze, si avvia con `hyperos-privacy-gui`. Il codice originale a riga di comando rimane disponibile.
+
 ## 🚀 Come si usa?
 
 Al momento servono un PC Windows e qualche passaggio tecnico. Se non hai dimestichezza con il terminale, **conviene aspettare la futura versione con interfaccia guidata**.
