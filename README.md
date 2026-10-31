@@ -39,6 +39,12 @@ The tool checks the current setting, asks before changing it, and checks the res
 
 **Other Xiaomi, Redmi and POCO devices:** detection only for now. The tool will **not** guess where to tap or apply untested changes.
 
+## 🖥️ Windows graphical interface (preview)
+
+A preliminary graphical interface is being developed in `feature/windows-gui`: connect a phone, review supported settings, analyze and explicitly approve one change at a time. It is **not yet a downloadable Windows installer** and has **not been tested on a real Windows desktop**.
+
+After installing project dependencies, start it with `hyperos-privacy-gui`. The existing command-line tool remains supported.
+
 ## 🚀 How do I use it?
 
 The current version requires a Windows computer and some setup. If you're not comfortable with terminals, **we recommend waiting for a guided desktop version**.

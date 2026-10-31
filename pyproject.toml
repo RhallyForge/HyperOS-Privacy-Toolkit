@@ -21,6 +21,7 @@ classifiers = [
 
 [project.scripts]
 hyperos-privacy = "hyperos_privacy_toolkit.cli:main"
+hyperos-privacy-gui = "hyperos_privacy_toolkit.gui:main"
 
 [tool.setuptools]
 package-dir = { "" = "src" }
